@@ -19,7 +19,11 @@ botao_7 = tk.Button(
 )
 botao_7.grid(row=0, column=0, padx=5, pady=5)
 
-botao_8 = tk.Button(janela, text="8", width=6, command=digitar_8)
+botao_8 = tk.Button(
+    janela, 
+    text="8", width=6, 
+    command=lambda: digitar("8")
+)
 botao_8.grid(row=0, column=1, padx=5, pady=5)
 
 botao_c = tk.Button(janela, text="C", width=6, command=limpar)
