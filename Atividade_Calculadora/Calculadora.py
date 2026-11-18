@@ -2,7 +2,7 @@ import tkinter as tk
 
 # Variáveis globais - Pra armazenar o primeiro número e a operação selecionada
 num1 = 0
-operacao = ""
+operacaoSelecionada = ""
 
 # Funções
 def digitar(numero):
@@ -24,21 +24,27 @@ def ponto():
         visor.insert(tk.END, ".")
 
 def operacao(operador):
-    global num1, operacao
-    operacao = operador
-    num1 = float(visor.get())
+    global num1, operacaoSelecionada
+    operacaoSelecionada = operador
+    try:
+        num1 = float(visor.get())
+    except ValueError:
+        num1 = 0
+    # Caso o visor não seja float, apaga o visor, e insere o operador
     try:
         visor.get() == isinstance(float)
     except TypeError:
-    # if visor.get() != "" or visor.get() != "+" or visor.get() != "-" or visor.get() != "×" or visor.get() != "÷":
         visor.delete(0, tk.END)
         visor.insert(tk.END, operador)
         
 def calcular():
-    global num1, operacao
-    num2 = float(visor.get())
+    global num1, operacaoSelecionada
+    try:
+        num2 = float(visor.get())
+    except ValueError:
+        num2 = 0
     resultado = 0
-    match operacao:
+    match operacaoSelecionada:
         case "+":
             resultado = num1 + num2
         case "-":
@@ -188,7 +194,7 @@ botao_apagar.grid(row=1, column=1, padx=5, pady=5)
 botao_ponto = tk.Button(
     janela,
     text=".", width=6,
-    command=lambda: digitar(".")
+    command=lambda: ponto()
 )
 botao_ponto.grid(row=5, column=2, padx=5, pady=5)
 
