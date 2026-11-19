@@ -64,138 +64,147 @@ def calcular():
 
 janela = tk.Tk()
 janela.title("Calculadora")
+janela.resizable(False, False)
+
+# Variáveis de Altura e Largura
+widthButtons = 7
+heightButtons = 2
+padyButtons = 2
+padxButtons = 1
 
 # Visor
 visor = tk.Entry(janela, width=32, justify="right")
+visor.bind("<Key>",lambda e: "break") # Função anônima que impede a digitação no visor por qualquer tecla do teclado, exceto pelos botões da calculadora
 visor.grid(row=0, column=0, columnspan=4, padx=5, pady=5)
+
 
 # Botões dos Números
 botao_0 = tk.Button(
     janela,
-    text="0", width=16,
+    text="0", width=widthButtons * 2 + 1, height=heightButtons,
     command=lambda: digitar("0")
 )
-botao_0.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
+botao_0.grid(row=5, column=0, columnspan=2, padx=padxButtons, pady=padyButtons)
 
 botao_1 = tk.Button(
     janela, 
-    text="1", width=6, 
+    text="1", width=widthButtons, height=heightButtons,
     command=lambda: digitar("1")
 )
-botao_1.grid(row=4, column=0, padx=5, pady=5)
+botao_1.grid(row=4, column=0, padx=padxButtons, pady=padyButtons)
 
 botao_2 = tk.Button(
     janela, 
-    text="2", width=6, 
+    text="2", width=widthButtons, height=heightButtons,
     command=lambda: digitar("2")
 )
-botao_2.grid(row=4, column=1, padx=5, pady=5)
+botao_2.grid(row=4, column=1, padx=padxButtons, pady=padyButtons)
 
 botao_3 = tk.Button(
     janela, 
-    text="3", width=6, 
+    text="3", width=widthButtons, height=heightButtons,
     command=lambda: digitar("3")
 )
-botao_3.grid(row=4, column=2, padx=5, pady=5)
+botao_3.grid(row=4, column=2, padx=padxButtons, pady=padyButtons)
 
 botao_4 = tk.Button(
     janela, 
-    text="4", width=6, 
+    text="4", width=widthButtons, height=heightButtons,
     command=lambda: digitar("4")
 )
-botao_4.grid(row=3, column=0, padx=5, pady=5)
+botao_4.grid(row=3, column=0, padx=padxButtons, pady=padyButtons)
 
 botao_5 = tk.Button(
     janela, 
-    text="5", width=6, 
+    text="5", width=widthButtons, height=heightButtons,
     command=lambda: digitar("5")
 )
-botao_5.grid(row=3, column=1, padx=5, pady=5)
+botao_5.grid(row=3, column=1, padx=padxButtons, pady=padyButtons)
 
 botao_6 = tk.Button(
     janela, 
-    text="6", width=6, 
+    text="6", width=widthButtons, height=heightButtons,
     command=lambda: digitar("6")
 )
-botao_6.grid(row=3, column=2, padx=5, pady=5)
+botao_6.grid(row=3, column=2, padx=padxButtons, pady=padyButtons)
 
 botao_7 = tk.Button(
     janela, 
-    text="7", width=6, 
+    text="7", width=widthButtons, height=heightButtons,
     command=lambda: digitar("7")
 )
-botao_7.grid(row=2, column=0, padx=5, pady=5)
+botao_7.grid(row=2, column=0, padx=padxButtons, pady=padyButtons)
 
 botao_8 = tk.Button(
     janela, 
-    text="8", width=6, 
+    text="8", width=widthButtons, height=heightButtons,
     command=lambda: digitar("8")
 )
-botao_8.grid(row=2, column=1, padx=5, pady=5)
+botao_8.grid(row=2, column=1, padx=padxButtons, pady=padyButtons)
     
 botao_9 = tk.Button(
     janela, 
-    text="9", width=6, 
+    text="9", width=widthButtons, height=heightButtons,
     command=lambda: digitar("9")
 )
-botao_9.grid(row=2, column=2, padx=5, pady=5)
+botao_9.grid(row=2, column=2, padx=padxButtons, pady=padyButtons)
 
 # Botões de funções
 botao_soma = tk.Button(
     janela, 
-    text="+", width=6, 
+    text="+", width=widthButtons, height=heightButtons,
     command=lambda: operacao("+")
 )
-botao_soma.grid(row=3, column=3, padx=5, pady=5)
+botao_soma.grid(row=3, column=3, padx=padxButtons, pady=padyButtons)
 
 botao_subtracao = tk.Button(
     janela, 
-    text="-", width=6, 
+    text="-", width=widthButtons, height=heightButtons,
     command=lambda: operacao("-")
 )
-botao_subtracao.grid(row=2, column=3, padx=5, pady=5)
+botao_subtracao.grid(row=2, column=3, padx=padxButtons, pady=padyButtons)
 
 botao_multiplicacao = tk.Button(
     janela,
-    text="×", width=6,
+    text="×", width=widthButtons, height=heightButtons,
     command=lambda: operacao("×")
 )
-botao_multiplicacao.grid(row=1, column=3, padx=5, pady=5)
+botao_multiplicacao.grid(row=1, column=3, padx=padxButtons, pady=padyButtons)
 
 botao_divisao = tk.Button(
     janela,
-    text="÷", width=6,
+    text="÷", width=widthButtons, height=heightButtons,
     command=lambda: operacao("÷")
 )
-botao_divisao.grid(row=1, column=2, padx=5, pady=5)
+botao_divisao.grid(row=1, column=2, padx=padxButtons, pady=padyButtons)
 
 botao_igual = tk.Button(
     janela,
-    text="=", width=6, height=4,
+    text="=", width=widthButtons, height=heightButtons * 2 + 1,
     command=lambda: calcular()
 )
-botao_igual.grid(row=4, rowspan=2, column=3, padx=5, pady=5)
+botao_igual.grid(row=4, rowspan=2, column=3, padx=padxButtons, pady=padyButtons)
 
 botao_c = tk.Button(
     janela, 
     text="C", 
-    width=6, 
+    width=widthButtons, height=heightButtons,
     command=limpar
 )
-botao_c.grid(row=1, column=0, padx=5, pady=5)
+botao_c.grid(row=1, column=0, padx=padxButtons, pady=padyButtons)
 
 botao_apagar = tk.Button(
     janela, 
-    text="⌫", width=6, 
+    text="⌫", width=widthButtons, height=heightButtons,
     command=lambda: apagar()
 )
-botao_apagar.grid(row=1, column=1, padx=5, pady=5)
+botao_apagar.grid(row=1, column=1, padx=padxButtons, pady=padyButtons)
 
 botao_ponto = tk.Button(
     janela,
-    text=".", width=6,
+    text=".", width=widthButtons, height=heightButtons,
     command=lambda: ponto()
 )
-botao_ponto.grid(row=5, column=2, padx=5, pady=5)
+botao_ponto.grid(row=5, column=2, padx=padxButtons, pady=padyButtons)
 
 janela.mainloop()
